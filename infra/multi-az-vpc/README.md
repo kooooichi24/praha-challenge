@@ -38,13 +38,18 @@
 
 <details><summary>回答</summary><div>
 
-セキュリティグループは、インスタンスレベルで動作する。そしてステートフル。
-ネットワーク ACL は、サブネットレベルで動作する。そしてステートレス。
+- セキュリティグループ
+  - インスタンスレベルで動作する。
+  - ステートフル。
+- ネットワーク ACL
+
+  - サブネットレベルで動作する。
+  - ステートレス。
 
 - 参考記事
-  - https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_Security.html
+  - [Amazon VPC でのインターネットワークトラフィックのプライバシー](https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_Security.html)
 
-## </div></details>
+</div></details>
 
 ## 疑問
 
