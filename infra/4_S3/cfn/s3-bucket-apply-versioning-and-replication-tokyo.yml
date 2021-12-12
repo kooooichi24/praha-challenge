@@ -1,0 +1,77 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: This template deploy S3 with versioning and replication configuration in Tokyo.
+# ------------------------------------------------------------#
+# Parameters
+# ------------------------------------------------------------#
+Parameters:
+  BucketName:
+    Type: String
+    Description: A name for the bucket.
+  DestinationS3ARN:
+    Type: String
+    Description: ARN of the S3 to be replicated.
+# ------------------------------------------------------------#
+# Resources
+# ------------------------------------------------------------#
+Resources:
+  IamRoleS3Replication:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: S3BucketAggregate
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: s3.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: S3Replication
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:ListBucket
+                  - s3:GetReplicationConfiguration
+                  - s3:GetObjectVersionForReplication
+                  - s3:GetObjectVersionAcl
+                  - s3:GetObjectVersionTagging
+                  - s3:GetObjectRetention
+                  - s3:GetObjectLegalHol
+                Resource:
+                  - !Ref DestinationS3ARN
+                  - !Sub ${DestinationS3ARN}/*
+                  - !Sub arn:aws:s3:::${BucketName}
+                  - !Sub arn:aws:s3:::${BucketName}/*
+              - Effect: Allow
+                Action:
+                  - s3:ReplicateObject
+                  - s3:ReplicateDelete
+                  - s3:ReplicateTags
+                  - s3:ObjectOwnerOverrideToBucketOwner
+                Resource:
+                  - !Sub ${DestinationS3ARN}/*
+                  - !Sub arn:aws:s3:::${BucketName}/*
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Ref BucketName
+      AccessControl: Private
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+      ReplicationConfiguration:
+        Role: !GetAtt IamRoleS3Replication.Arn
+        Rules:
+          - Id: BackUpRule
+            Status: Enabled
+            Prefix: "" # 空のプレフィックス = すべてのオブジェクトにルールを適用
+            Destination:
+              Bucket: !Ref DestinationS3ARN
+              StorageClass: STANDARD
