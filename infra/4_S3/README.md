@@ -99,8 +99,11 @@ S3 のユースケースは、下記などが存在する
 
 #### Answer
 
-- CFn のスタックを実行するリージョンに S3 バケットが構築されるみたい
-  - [AWS Cloudformation Template - Set Region in S3 Bucket](https://stackoverflow.com/questions/39587692/aws-cloudformation-template-set-region-in-s3-bucket)
+- GUI
+  - CFn のスタックを実行するリージョンに S3 バケットが構築されるみたい
+    - [AWS Cloudformation Template - Set Region in S3 Bucket](https://stackoverflow.com/questions/39587692/aws-cloudformation-template-set-region-in-s3-bucket)
+- CLI
+  - aws cli の `--region で指定可能`
 
 ### 2
 
