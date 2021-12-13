@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: This template deploy S3 with private access control and public access block.
+# ------------------------------------------------------------#
+# Parameters
+# ------------------------------------------------------------#
+Parameters:
+  BucketName:
+    Type: String
+    Description: A name for the bucket.
+# ------------------------------------------------------------#
+# Resources
+# ------------------------------------------------------------#
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Ref BucketName
+      AccessControl: Private
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LifecycleConfiguration:
+        Rules:
+          - Id: images-lifecycle-rule
+            Status: Enabled
+            Prefix: "images"
+            Transitions:
+              - TransitionInDays: 30
+                StorageClass: GLACIER
+          - Id: log-lifecycle-rule
+            Status: Enabled
+            Prefix: "log"
+            ExpirationInDays: 90
