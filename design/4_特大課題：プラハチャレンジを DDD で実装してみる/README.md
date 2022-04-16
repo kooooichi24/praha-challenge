@@ -23,3 +23,6 @@
 ### 2. ドメインモデル図作成
 
 ![domain_model](./modeling/domain-model.png)
+
+## 課題 2
+[here](https://github.com/kooooichi24/praha-challenge-template)
