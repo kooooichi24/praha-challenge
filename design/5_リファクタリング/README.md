@@ -8,7 +8,7 @@
 
 ## 課題１
 - 本課題の題材として、[kata-log.rocksのtennis-kata](https://kata-log.rocks/tennis-kata)を採用する。
-- リファクタリング後の成果物は[こちら](https://github.com/kooooichi24/Tennis-Refactoring-Kata/tree/main/typescript-jest)を参照してください。
+- リファクタリング後の成果物は[こちら](https://github.com/kooooichi24/Tennis-Refactoring-Kata/pull/1)を参照してください。
   - コミットメッセージに「なぜリファクタリングを実施したか」を記載しました
 
 ### メモ
