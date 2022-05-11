@@ -73,6 +73,7 @@
 
 ## 2.
 
+[マイグレーション作業手順書](https://docs.google.com/spreadsheets/d/1_MFLtiKTnepBzQI-dwWzFbOj8CGLAEYetMLf_x4gKjQ/edit#gid=0)
 
 
 ### メモ
