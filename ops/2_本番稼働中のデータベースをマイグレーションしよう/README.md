@@ -120,6 +120,24 @@
 
 ## 2.
 
+### Table
+PairsとUsersが、1対多の関係
+
+**Pairs**
+|id|name |
+|--|-----|
+|1 |pair1|
+|2 |pair2|
+
+**Users**
+|id|name |pairId|
+|--|-----|------|
+|1 |user1|     1|
+|2 |user2|     1|
+|3 |user3|     2|
+|4 |user4|     2|
+
+
 [マイグレーション作業手順書](https://docs.google.com/spreadsheets/d/1_MFLtiKTnepBzQI-dwWzFbOj8CGLAEYetMLf_x4gKjQ/edit#gid=0)
 
 
