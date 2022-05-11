@@ -120,26 +120,26 @@
 
 ## 2.
 
-### Table
-PairsとUsersが、1対多の関係
+### Before After
+- Before
+  - PairsとUsersが、1対多の関係
+- After
+  - PairsとUsersが、多対多の関係
+  - そのため、中間テーブルを導入する
 
-**Pairs**
-|id|name |
-|--|-----|
-|1 |pair1|
-|2 |pair2|
-
-**Users**
-|id|name |pairId|
-|--|-----|------|
-|1 |user1|     1|
-|2 |user2|     1|
-|3 |user3|     2|
-|4 |user4|     2|
-
-
+### 手順書
 [マイグレーション作業手順書](https://docs.google.com/spreadsheets/d/1_MFLtiKTnepBzQI-dwWzFbOj8CGLAEYetMLf_x4gKjQ/edit#gid=0)
 
+[マイグレーション対象のサンプルコード](./migrate-demo/)
+
+### 発生し得る問題
+- ステップ5の、新しいスキーマからの読み込みを有効にした後に、ロールバックするときに問題が発生する
+- 新しいスキーマで新たに取得した情報が、ロールバックすると、既存のスキーマには書き込まれない問題がある
+
+### 他にどんな情報があると良いか
+- 踏み台へアクセスする際のコマンド
+- DBへ接続するコマンド
+- ロールバック時の手順
 
 ### メモ
 ## 参考文献
