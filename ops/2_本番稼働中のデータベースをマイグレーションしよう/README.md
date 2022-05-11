@@ -70,6 +70,53 @@
   - デフォルト値を用いる
     - デフォルト値とNOT NULL制約を指定してマイグレーション実施
     - その後、デフォルト値の設定を削除する
+- やってみた
+  ```sql
+  test=# CREATE TABLE users (
+    id integer PRIMARY KEY,
+    name varchar(10)
+  );
+
+  test=# \dt
+         List of relations
+   Schema | Name  | Type  | Owner 
+  --------+-------+-------+-------
+   public | users | table | root
+  (1 row)
+
+  test=# INSERT INTO users(id, name) VALUES(1, 'Tanaka');
+  INSERT 0 1
+  test=# INSERT INTO users(id, name) VALUES(2, 'Sato');
+  INSERT 0 1
+  test=# INSERT INTO users(id, name) VALUES(3, 'Suzuki');
+  INSERT 0 1
+
+  test=# SELECT * FROM users;
+   id |  name  
+  ----+--------
+    1 | Tanaka
+    2 | Sato
+    3 | Suzuki
+  (3 rows)
+
+  /* エラー発生 */
+  test=# ALTER TABLE users ADD COLUMN age int NOT NULL;
+  ERROR:  column "age" contains null values
+
+  /* DEFAULT値を設定すると成功 */
+  test=# ALTER TABLE users ADD COLUMN age int DEFAULT 20 NOT NULL;
+  ALTER TABLE
+  test=# SELECT * FROM users;
+   id |  name  | age 
+  ----+--------+-----
+    1 | Tanaka |  20
+    2 | Sato   |  20
+    3 | Suzuki |  20
+  (3 rows)
+
+  test=# ALTER TABLE users ALTER COLUMN age DROP DEFAULT;
+  ALTER TABLE
+  ```
 
 ## 2.
 
