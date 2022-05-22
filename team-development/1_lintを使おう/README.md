@@ -17,7 +17,9 @@
 - コードの品質を担保するため
 
 ### 2. ESLintのルール
-- a
+`eslint:recommended` から5つ抜粋しようとしたが、どれが重要か順位づけができなかったです、、
+
+- [no-var](https://eslint.org/docs/rules/no-var)
 
 ### 3. eslint-config-airbnb & 課題 2
 [node-ts-jest-eslint-prettier-boilerplate](./node-ts-jest-eslint-prettier-boilerplate/)
@@ -40,6 +42,8 @@
 
 
 #### 参考記事
+- [ESLint Rules](https://eslint.org/docs/rules/)
+- [eslint-config-* の比較表](https://zenn.dev/tapioca/articles/5685d794f6452b#ecmascript-6)
 - [分かった気になる静的解析](https://qiita.com/s-tanoue/items/7eb485409765442fcb54)
 - [Awesome ESLint](https://github.com/dustinspecker/awesome-eslint)
 - [pre-commitでこんな自動レビューをしています！手戻りが少なくて最高！](https://tech.appbrew.io/entry/2020/05/15/132413)
