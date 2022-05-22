@@ -41,7 +41,7 @@
   - `git commit --no-verify`や`	git commit -`でスキップ可能
 
 
-#### 参考記事
+## 参考記事
 - [ESLint Rules](https://eslint.org/docs/rules/)
 - [eslint-config-* の比較表](https://zenn.dev/tapioca/articles/5685d794f6452b#ecmascript-6)
 - [分かった気になる静的解析](https://qiita.com/s-tanoue/items/7eb485409765442fcb54)
