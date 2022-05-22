@@ -22,7 +22,7 @@
 - [no-var](https://eslint.org/docs/rules/no-var)
 
 ### 3. eslint-config-airbnb & 課題 2
-[node-ts-jest-eslint-prettier-boilerplate](./node-ts-jest-eslint-prettier-boilerplate/)
+[node-ts-jest-eslint-prettier-boilerplate](https://github.com/kooooichi24/node-ts-jest-eslint-prettier-boilerplate)
 
 
 ## 課題 2
