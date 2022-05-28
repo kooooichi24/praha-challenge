@@ -48,8 +48,6 @@ jobs:
   - workflowの分割実行[^1]
   - CIの実行対象となるファイルを絞り込む
 
-[^1]: [GitHub Actions ワークフローにおけるジョブ制御](https://developer.mamezou-tech.com/blogs/2022/02/20/job-control-in-github-actions/)
-
 ### GitHub Actionsの ワークフローの実行方法
 
 ### 特定ディレクトリ配下のみ
@@ -62,5 +60,5 @@ jobs:
 ## 参考記事
 - [Node.js のビルドとテスト](https://docs.github.com/ja/actions/automating-builds-and-tests/building-and-testing-nodejs)
 - [GitHub ActionsでのUnit Testを高速化する](https://starfish719.netlify.app/github-actions-unit-test/)
-- [GitHub Actions ワークフローにおけるジョブ制御](https://developer.mamezou-tech.com/blogs/2022/02/20/job-control-in-github-actions/)
+- [^1]: [GitHub Actions ワークフローにおけるジョブ制御](https://developer.mamezou-tech.com/blogs/2022/02/20/job-control-in-github-actions/)
 - [GitHub ActionsでAWSの永続的なクレデンシャルを渡すことなくIAM Roleが利用できるようになったようです](https://dev.classmethod.jp/articles/github-actions-without-permanent-credential/)
