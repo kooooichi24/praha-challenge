@@ -63,6 +63,33 @@ jobs:
             > 
             > 結論としては、node_modulesのキャッシュを行いたいならactions/cacheを使えば良さそうです。
   - jobの並列実行
+    - 何も指定しなければ、job は並列実行
+    - 順次実行するには、`needs` キーワードで、先行のジョブを指定
+  - workflowの分割実行
+    - `strategy matrix` を利用することで、workflow自体の分割実行が可能
+      ```yml
+      ...
+
+      jobs:
+        test:
+          runs-on: ubuntu-latest
+          strategy:
+            matrix:
+              node-version: [12.x, 14.x, 16.x]
+          ...
+      ```
+    - CIの実行対象となるファイルを絞り込む
+      - > pushイベントとpull_requestイベントを使用する場合、どのファイルパスが変更されたかに基づいて実行するワークフローを設定することができます。
+        - ```yml
+          on:
+            push:
+              paths-ignore:
+                - ".husky/**"
+                - "*.md"
+          ```
+        - [on.<push|pull_request|pull_request_target>.<paths|paths-ignore>](https://docs.github.com/ja/actions/using-workflows/workflow-syntax-for-github-actions)
+
+
 
 ### GitHub Actionsの ワークフローの実行方法
 
