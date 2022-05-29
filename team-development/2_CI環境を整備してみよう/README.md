@@ -42,11 +42,27 @@ jobs:
 
 ## 課題 3
 ### ビルド時間を短縮する
-- 手法
+- ビルド時間を短縮するためにできる事
   - cache
   - jobの並列実行
   - workflowの分割実行
   - CIの実行対象となるファイルを絞り込む
+- 具体的な方法
+  - cache
+    - 成果物
+      - [unit-test.yml](https://github.com/kooooichi24/github-action-hands-on/blob/master/.github/workflows/unit-test.yml)
+    - 疑問点
+      - Q: actions/setup-node@v3 の cache 設定により node_modules が cache できる？
+      - A: できない
+        - 公式に記載
+          - [actions/setup-node](https://github.com/actions/setup-node)
+          - > Note: The action does not cache node_modules
+        - 同じように勘違いしている人発見
+          - [GitHub Actionsでactions/setup-nodeだけでnode_modulesをキャッシュできるのか試してみた](https://dev.classmethod.jp/articles/caching-dependencies-in-workflow-execution-on-github-actions/)
+          - > node_modulesのキャッシュはactions/cacheを使おう
+            > 
+            > 結論としては、node_modulesのキャッシュを行いたいならactions/cacheを使えば良さそうです。
+  - jobの並列実行
 
 ### GitHub Actionsの ワークフローの実行方法
 
@@ -62,3 +78,4 @@ jobs:
 - [GitHub ActionsでのUnit Testを高速化する](https://starfish719.netlify.app/github-actions-unit-test/)
 - [GitHub Actions ワークフローにおけるジョブ制御](https://developer.mamezou-tech.com/blogs/2022/02/20/job-control-in-github-actions/)
 - [GitHub ActionsでAWSの永続的なクレデンシャルを渡すことなくIAM Roleが利用できるようになったようです](https://dev.classmethod.jp/articles/github-actions-without-permanent-credential/)
+- [GitHub Actionsでactions/setup-nodeだけでnode_modulesをキャッシュできるのか試してみた](https://dev.classmethod.jp/articles/caching-dependencies-in-workflow-execution-on-github-actions/)
