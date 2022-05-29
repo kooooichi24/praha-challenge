@@ -65,6 +65,7 @@ jobs:
   - jobの並列実行
     - 何も指定しなければ、job は並列実行
     - 順次実行するには、`needs` キーワードで、先行のジョブを指定
+    - [GitHub Actions ワークフローにおけるジョブ制御](https://developer.mamezou-tech.com/blogs/2022/02/20/job-control-in-github-actions/)
   - workflowの分割実行
     - `strategy matrix` を利用することで、workflow自体の分割実行が可能
       ```yml
@@ -89,13 +90,39 @@ jobs:
           ```
         - [on.<push|pull_request|pull_request_target>.<paths|paths-ignore>](https://docs.github.com/ja/actions/using-workflows/workflow-syntax-for-github-actions)
 
-
-
 ### GitHub Actionsの ワークフローの実行方法
 
+- 実現方法
+  - repository_dispatch で発火するワークフローを作成する
+  - 呼び出し側は、WebHooks や curl などを利用してHTTPリクエストを送信
+- 具体例
+  - [repository-dispatch.yml](https://github.com/kooooichi24/github-action-hands-on/blob/master/.github/workflows/repository-dispatch.yml)
+    - ```yml
+      ...
+      on:
+        repository_dispatch:
+          types: [repository-dispatch-test]
+      ...
+      ```
+  - curl で呼び出し
+    - ```bash
+      curl \
+      -X POST \
+      -H "Accept: application/vnd.github.v3+json" -H "Authorization: token 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" \
+      https://api.github.com/repos/kooooichi24/github-action-hands-on/dispatches \
+      -d '{"event_type":"repository-dispatch-test","client_payload":{"passed":true,"message":"success"}}'
+      ```
+  - 結果
+    - ![assets3](./assets/assets3.jpg)
+
+- 参考記事
+  - [Create a repository dispatch event](https://docs.github.com/ja/rest/repos/repos#create-a-repository-dispatch-event)
+  - [repository_dispatch](https://docs.github.com/ja/actions/using-workflows/events-that-trigger-workflows#repository_dispatch)
 ### 特定ディレクトリ配下のみ
+`### ビルド時間を短縮する` の `CIの実行対象となるファイルを絞り込む` にて既に回答済み
 
 ### jobの依存関係
+`### ビルド時間を短縮する` の `jobの並列実行` にて既に回答済み
 
 ### Security
 
@@ -103,6 +130,4 @@ jobs:
 ## 参考記事
 - [Node.js のビルドとテスト](https://docs.github.com/ja/actions/automating-builds-and-tests/building-and-testing-nodejs)
 - [GitHub ActionsでのUnit Testを高速化する](https://starfish719.netlify.app/github-actions-unit-test/)
-- [GitHub Actions ワークフローにおけるジョブ制御](https://developer.mamezou-tech.com/blogs/2022/02/20/job-control-in-github-actions/)
 - [GitHub ActionsでAWSの永続的なクレデンシャルを渡すことなくIAM Roleが利用できるようになったようです](https://dev.classmethod.jp/articles/github-actions-without-permanent-credential/)
-- [GitHub Actionsでactions/setup-nodeだけでnode_modulesをキャッシュできるのか試してみた](https://dev.classmethod.jp/articles/caching-dependencies-in-workflow-execution-on-github-actions/)
