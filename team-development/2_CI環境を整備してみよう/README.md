@@ -125,7 +125,38 @@ jobs:
 `### ビルド時間を短縮する` の `jobの並列実行` にて既に回答済み
 
 ### Security
+- 手段
+  - [シークレットを使用する](https://docs.github.com/ja/actions/security-guides/security-hardening-for-github-actions)
+    - `Environment secrets` や `Repository secrets` を利用する
+      - Environment secrets
+        - Env ごとに存在する Secret
+      - Repository secrets
+        - Repository に存在する単一の Secret
+      - [Difference between Github's "Environment" and "Repository" secrets?](https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets#:~:text=Repository%20secrets%20are%20specific%20to,are%20specific%20to%20an%20environment.)
+- やってみた
+  - `Repository secrets` に設定
+    - ![assets4](./assets/assets4.jpg)
+  - workflow
+    ```yml
+    name: Test
 
+    on:
+      repository_dispatch:
+        types: [repository-dispatch-test]
+
+    jobs:
+      Repository-Dispatch-Test:
+        runs-on: ubuntu-latest
+        timeout-minutes: 5 # job全体
+        steps:
+          - run: echo ${{ secrets.SECRET_HOGE }}
+    ```
+  - 実行結果
+    - ![assets5](./assets/assets5.jpg)
+
+- 参考記事
+  - [GitHub Actions のセキュリティ強化](https://docs.github.com/ja/actions/security-guides/security-hardening-for-github-actions)
+  - [Github Actions で secret を使う](https://qiita.com/inouet/items/c7d39ac4641c05eec4a0)
 
 ## 参考記事
 - [Node.js のビルドとテスト](https://docs.github.com/ja/actions/automating-builds-and-tests/building-and-testing-nodejs)
