@@ -360,9 +360,75 @@ index 0000000..6b2b3db
 
 ### 6. rebase
 
+複数のコミットを一つにまとめる
+
+1. interactive 
+    ```sh
+    $ git rebase -i
+    ```
+2. squash
+    ```sh
+    pick 490e798 fix: clear rebase.js
+    s a5ea38d fix: base command
+    s 5ec242a fix: interactive option
+    s 0354d4a fix: squash mode
+    s 4051fb0 fix: fixup mode
+    s ac97980 fix: drop mode
+
+    # Rebase 45c73a1..ac97980 onto 45c73a1 (6 commands)
+    #
+    # Commands:
+    # p, pick <commit> = use commit
+    # r, reword <commit> = use commit, but edit the commit message
+    # e, edit <commit> = use commit, but stop for amending
+    # s, squash <commit> = use commit, but meld into previous commit
+    # f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+    #                    commit's log message, unless -C is used, in which case
+    #                    keep only this commit's message; -c is same as -C but
+    #                    opens the editor
+    # x, exec <command> = run command (the rest of the line) using shell
+    # b, break = stop here (continue rebase later with 'git rebase --continue')
+    # d, drop <commit> = remove commit
+    # l, label <label> = label current HEAD with a name
+    # t, reset <label> = reset HEAD to a label
+    # m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+    # .       create a merge commit using the original merge commit's
+    # .       message (or the oneline, if no original merge commit was
+    # .       specified); use -c <commit> to reword the commit message
+    #
+    # These lines can be re-ordered; they are executed from top to bottom.
+    #
+    # If you remove a line here THAT COMMIT WILL BE LOST.
+    #
+    # However, if you remove everything, the rebase will be aborted.
+    #
+    ~
+    ```
+
 ### 7. 新たなブランチ
+
+```sh
+$ git checkout -b develop
+$ git checkout -b stg
+```
+
 ### 8. 最新コミットのclone
+
+master の最新の履歴のみ取得
+```sh
+$ git clone --depth 1 <repository>
+```
+
+全てのブランチの最新の履歴を取得
+```sh
+$ git clone --depth 1 --no-single-branch <repository>
+```
+
 ### 9. マージ中断
+
+```sh
+$ git merge --abort
+```
 
 ## 参考記事
 - [忘れやすい人のための git diff チートシート](https://qiita.com/shibukk/items/8c9362a5bd399b9c56be)
