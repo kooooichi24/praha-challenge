@@ -136,6 +136,10 @@
   - Hooks すごい
   - [Container/Presentational Pattern](https://www.patterns.dev/posts/presentational-container-pattern/) を Hooks を利用することで実現できる
 
+## 課題2
+
+- [PR](https://github.com/kooooichi24/nextjs-tutorial/pull/1)
+
 ## 参考文献
 - [Atomic Design](https://atomicdesign.bradfrost.com/table-of-contents/)
 - [Patterns](https://www.patterns.dev/)
