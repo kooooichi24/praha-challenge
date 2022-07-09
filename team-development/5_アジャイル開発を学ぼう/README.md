@@ -1,13 +1,13 @@
 # アジャイル開発を学ぼう
 
-## 課題内容
+# 課題内容
 
 [airtable](https://airtable.com/appWjizyFJue33ycs/tblTnXBXFOYJ0J7lZ/viwyi8muFtWUlhNKG/recj6oOEPPrtGP8Vn?blocks=hide)
 
 ---
 
-## 課題 1
-### アジャイルとは
+# 課題 1
+## アジャイルとは
 - アジャイルの目的
   - > アジャイルとは、変化を生み出し、それに対応する能力である。不確実で激動する環境に対処し、最終的に成功するための方法です。
   - [What is Agile?](https://www.agilealliance.org/agile101/#:~:text=Introductory%20Videos-,what%20is%20agile%3F,-Agile%20is%20the)
@@ -19,7 +19,7 @@
 - 参考資料
   - [アジャイルが何なのか絶対に理解できます。アジャイル迷子のための「アジャイルの本質」](https://youtu.be/XXLbkYndAJ4)
 
-### 開発スピードが上がる？
+## 開発スピードが上がる？
 - 回答
   - 相対的に、上がることが多い
 - 前提
@@ -27,8 +27,8 @@
 - 理由
   - 変化に対応しやすくなるから
 
-### XP
-#### ユーザストーリー
+## XP
+### ユーザストーリー
 - ユーザストーリーとは
   - 顧客に見える機能の単位を記述したもの
 - テンプレート
@@ -52,4 +52,8 @@
   - [9 User Story Smells And Anti-Patterns](https://www.kaizenko.com/%EF%BB%BF9-user-story-smells-and-anti-patterns/)
   - [User Stories Writing: Antipatterns](https://medium.com/@carmineingaldi/user-stories-writing-antipatterns-9e9e1ff710b9)
 
-#### ストーリーポイント
+### ストーリーポイント
+- 途中で変えるべきではない
+  - なぜなら、原因解明を握り潰すと、振り返りができなくなり、改善ができなくなるから
+- 当初見積もった時間
+- Dev チーム内で認識の差を埋めるため
