@@ -62,6 +62,15 @@ function useEffect(effect: EffectCallback, deps?: DependencyList): void;
 - [PR](https://github.com/kooooichi24/use-effect-demo/pull/4)
 
 ## 課題 4
+SomeComponent の useEffect が実行されるタイミングを下記から全て選んでください。
+1. Mount 時
+2. SomeComponent の button をクリックしたとき
+3. FetchComponent のみ再レンダリングしたとき
+4. Index の button をクリックしたとき
+
+※ CodeSandbox のコードを改変しました。
+
+![2](./assets/2.jpg)
 
 ### 参考記事
 - [Understanding React’s useEffect cleanup function](https://blog.logrocket.com/understanding-react-useeffect-cleanup-function/)
